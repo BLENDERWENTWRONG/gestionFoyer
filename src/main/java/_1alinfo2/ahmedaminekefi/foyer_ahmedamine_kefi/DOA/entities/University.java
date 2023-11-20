@@ -2,14 +2,17 @@ package _1alinfo2.ahmedaminekefi.foyer_ahmedamine_kefi.DOA.entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Entity
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@Getter
+@Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "universities")
 public class University {
     @Id
@@ -17,5 +20,8 @@ public class University {
     Long idUniversity ;
     String nomUniversity;
     String adresse ;
+
+    @OneToOne
+    private Foyer foyer;
 
 }

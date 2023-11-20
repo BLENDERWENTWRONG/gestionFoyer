@@ -2,16 +2,21 @@ package _1alinfo2.ahmedaminekefi.foyer_ahmedamine_kefi.DOA.entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
+import java.util.Date;
+import java.util.Set;
 
 @Entity
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@Getter
+@Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "reservations")
 public class Reservation {
 
@@ -19,4 +24,8 @@ public class Reservation {
     Long idReservation ;
     LocalDate anneeUniversitaire;
     Boolean estValide;
+
+
+    @ManyToMany(mappedBy="reservations",cascade = CascadeType.ALL)
+    private Set<Etudiant> etudiants;
 }

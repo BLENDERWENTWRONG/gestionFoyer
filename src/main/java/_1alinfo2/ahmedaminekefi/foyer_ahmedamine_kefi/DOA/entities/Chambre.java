@@ -3,14 +3,19 @@ package _1alinfo2.ahmedaminekefi.foyer_ahmedamine_kefi.DOA.entities;
 
 import _1alinfo2.ahmedaminekefi.foyer_ahmedamine_kefi.DOA.enums.TypeChambre;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
+import java.util.Set;
 
 @Entity
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@Getter
+@Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name = "blocs")
 public class Chambre {
     @Id
@@ -19,4 +24,9 @@ public class Chambre {
     Long numeroChambre;
     @Enumerated(EnumType.STRING)
     TypeChambre typeChambre;
+    @ManyToOne
+    private Bloc bloc;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Reservation> reservations;
 }
