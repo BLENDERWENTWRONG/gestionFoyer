@@ -21,7 +21,7 @@ import java.util.Set;
 public class Reservation {
 
     @Id
-    Long idReservation ;
+    String idReservation ;
     LocalDate anneeUniversitaire;
     Boolean estValide;
 
