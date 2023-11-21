@@ -26,7 +26,7 @@ public class Foyer {
     @OneToOne
     private University university;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="entreprise")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="foyer")
     private Set<Bloc> blocs;
 
 }
